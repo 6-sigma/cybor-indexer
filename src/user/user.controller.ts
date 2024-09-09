@@ -33,7 +33,7 @@ export class UserController {
   @Post('add-partner-coin')
   async addPartnerCoin(@Req() request: Request, @Body() body: {amount: number}): Promise<number> {
     // var user = await this.userService.addPartnerCoin(request.user.id, body.amount || 1);
-    var user = await this.userService.addPartnerCoin(request.user.id, body.amount || 1);
+    var user = await this.userService.addPartnerCoin(request.user.id, body.amount || 0.1);
     return user.partner_coin;
   }
 
