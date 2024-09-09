@@ -82,6 +82,17 @@ export class UserService {
     return await this.userRepository.save(updated);
   }
 
+  async updateTutorial(id: number, tutorial: string): Promise<UserEntity> {
+    let toUpdate = await this.userRepository.findOne(id);
+    let updated = {};
+    if (tutorial == "story") {
+      updated = Object.assign(toUpdate, {finish_story_tutorial: true});
+    } else if (tutorial == "zone") {
+      updated = Object.assign(toUpdate, {finish_zone_page_tutorial: true});
+    }
+    return await this.userRepository.save(updated); 
+  }
+
   async addPoint(id: number, point: number): Promise<UserEntity> {
     let toUpdate = await this.userRepository.findOne(id);
     let updated = Object.assign(toUpdate, {point: point + toUpdate.point});
@@ -134,6 +145,6 @@ export class UserService {
       x: user.x,
     };
 
-    return {user: userRO, partnerCoin: user.partner_coin};
+    return {user: userRO, partnerCoin: user.partner_coin, finishStoryTutorial: user.finish_story_tutorial, finishZonePageTutorial: user.finish_zone_page_tutorial};
   }
 }

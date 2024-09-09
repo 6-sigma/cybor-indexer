@@ -22,6 +22,7 @@ export class UserModule implements NestModule {
         {path: 'user', method: RequestMethod.PUT},
         {path: 'info', method: RequestMethod.GET},
         {path: 'add-partner-coin', method: RequestMethod.POST},
+        {path: 'update-tutorial', method: RequestMethod.POST},
       );
   }
 }

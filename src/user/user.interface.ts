@@ -9,4 +9,6 @@ export interface UserData {
 export interface UserRO {
   user: UserData;
   partnerCoin: number;
+  finishStoryTutorial: boolean;
+  finishZonePageTutorial: boolean;
 }

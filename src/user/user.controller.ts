@@ -37,6 +37,28 @@ export class UserController {
     return user.partner_coin;
   }
 
+  @Post('update-tutorial')
+  async updateTutorial(@Req() request: Request, @Body() body: {tutorial: string}): Promise<object> {
+    var _user = await this.userService.updateTutorial(request.user.id, body.tutorial || "");
+    const {email, address, chain} = _user;
+    const user = {email, address, chain, partnerCoin: _user.partner_coin, finishStoryTutorial: _user.finish_story_tutorial, finishZonePageTutorial: _user.finish_zone_page_tutorial};
+    return user;
+  }
+
+
+  @Post('start-tap')
+  async startTap(@Req() request: Request): Promise<object> {
+    // TODO 开始tap
+    return {};
+  }
+
+
+  @Post('end-tap')
+  async endTap(@Req() request: Request): Promise<object> {
+    // TODO 结束tap
+    return {};
+  }
+
   // @Put('user')
   // async update(@User('id') userId: number, @Body('user') userData: UpdateUserDto) {
   //   return await this.userService.update(userId, userData);
@@ -68,7 +90,7 @@ export class UserController {
 
     const token = await this.userService.generateJWT(_user);
     const {email, address, chain} = _user;
-    const user = {email, token, address, chain, partnerCoin: _user.partner_coin};
+    const user = {email, token, address, chain, partnerCoin: _user.partner_coin, finishStoryTutorial: _user.finish_story_tutorial, finishZonePageTutorial: _user.finish_zone_page_tutorial};
     return user;
   }
 }
