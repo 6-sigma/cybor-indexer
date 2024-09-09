@@ -76,7 +76,9 @@ export class UserService {
 
   async addPartnerCoin(id: number, partnerCoin: number): Promise<UserEntity> {
     let toUpdate = await this.userRepository.findOne(id);
+    console.log("toUpdate.partner_coin::::::: ", toUpdate.partner_coin, partnerCoin);
     let updated = Object.assign(toUpdate, {partner_coin: partnerCoin + toUpdate.partner_coin});
+    console.log("updated.partner_coin::::::: ", updated.partner_coin);
 
     // console.log("updated::::::: ", updated, partnerCoin);
     return await this.userRepository.save(updated);

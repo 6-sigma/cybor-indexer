@@ -13,10 +13,10 @@ export class UserEntity {
   @Column()
   chain: string;
 
-  @Column({ type: 'numeric', precision: 100, scale: 32, default: 0 })
+  @Column({ type: 'bigint', default: 0 })
   point: number;
 
-  @Column({ type: 'numeric', precision: 100, scale: 32, default: 0 })
+  @Column({ type: 'bigint', default: 0 })
   partner_coin: number;
 
   @Column({default: ''})
